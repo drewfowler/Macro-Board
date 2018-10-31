@@ -1,0 +1,122 @@
+#include <Adafruit_GFX.h>    // Core graphics library
+#include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
+#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
+#include <SPI.h>
+
+
+#define TFT_CS     A0
+#define TFT_RST    A1  
+#define TFT_DC     A2
+
+// For 1.44" and 1.8" TFT with ST7735 use
+Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS,  TFT_DC, TFT_RST);
+
+int margin = 10;
+int squareWidth = 0;
+int squareHeight = 0;
+
+void setup(void) {
+  Serial.begin(9600);
+  // Use this initializer if you're using a 1.8" TFT
+  tft.initR(INITR_GREENTAB);   // initialize a ST7735S chip, black tab
+  //Rotate so SPI TFT is on bottom
+  tft.setRotation(3);
+  //Clear screen
+  tft.fillScreen(ST77XX_BLACK);
+  //draw each button space
+  drawSquares(ST77XX_YELLOW);
+  //define square size
+  squareWidth = tft.width()/3;
+  squareHeight = tft.height()/3;
+
+//  printSquare("Drew",1,ST77XX_YELLOW);
+
+  printSquare("This",7,ST77XX_GREEN);
+  setTitle("Altium"); 
+}
+
+void loop() 
+{
+  if(Serial.available()>0)
+  {
+    if(Serial.readString() = "Change")
+    {
+      printSquare("Needs Changing",5,ST77XX_GREEN);
+      delay(200);
+    }
+  }
+}
+
+void printSquare(String text,int square,uint16_t color)
+{
+  int y = 0;
+  int x = 0;
+  int yspace = 0;
+  int xspace = 0;
+
+  switch(square){
+    case 1:
+      yspace = 0;
+      xspace = 0;
+      break;
+    case 2:
+      yspace = 0;
+      xspace = 1;
+      break;
+    case 3:
+      yspace = 0;
+      xspace = 2;
+      break;
+    case 4:
+      yspace = 1;
+      xspace = 0;
+      break;
+    case 5:
+      yspace = 1;
+      xspace = 1;
+      break;
+    case 6:
+      yspace = 1;
+      xspace = 2;
+      break;
+    case 7:
+      yspace = 2;
+      xspace = 0;
+      break;
+    case 8:
+      yspace = 2;
+      xspace = 1;
+      break;
+    case 9:
+      yspace = 2;
+      xspace = 2;
+      break;
+  }
+
+  x = (squareWidth*xspace) + margin;
+  y = (squareHeight*yspace) + margin;
+  tft.setCursor(x,y);
+
+  tft.setTextColor(color);
+  tft.setTextWrap(true);
+  tft.print(text);
+}
+
+void drawSquares(uint16_t color)
+{
+  //Vertical Lines
+  tft.drawLine(tft.width()/3, 0, tft.width()/3, tft.height()-1, color);
+  tft.drawLine((tft.width()/3)*2, 0, (tft.width()/3)*2, tft.height()-1, color);
+  //Horizontal Lines
+  tft.drawLine(0,tft.height()/3,tft.width(), tft.height()/3, color);
+  tft.drawLine(0,(tft.height()/3)*2,tft.width(),(tft.height()/3)*2, color);
+}
+
+void setTitle(String title)
+{
+  tft.setCursor(tft.width()/2-20,0);
+  tft.setTextSize(1);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.print(title);
+}
+

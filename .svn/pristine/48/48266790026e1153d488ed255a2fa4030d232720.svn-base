@@ -1,0 +1,14 @@
+import psutil, win32process, win32gui, time
+def active_window_process_name():
+    pid = win32process.GetWindowThreadProcessId(win32gui.GetForegroundWindow()) #This produces a list of PIDs active window relates to
+    return(psutil.Process(pid[-1]).name()) #pid[-1] is the most likely to survive last longer
+
+Window = active_window_process_name()
+
+while 1:
+    prevWindow = Window
+    time.sleep(0.1) #click on a window you like and wait 3 seconds 
+    Window = active_window_process_name()
+
+    if(prevWindow != Window):
+        print (Window)

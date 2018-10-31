@@ -1,0 +1,31 @@
+import serial
+
+MacroFile ='MacroScreen.txt'
+
+
+        
+        
+##Check pythonw.exe for background process
+
+
+f = open(MacroFile,"r")
+
+content = f.readlines();
+
+for line in content:
+    text = line.split();
+    if(text[0] == "*"):
+        Program = text[1]
+        print(Program)
+    
+        
+            
+    
+
+    
+    
+
+
+##ser = serial.Serial('COM38',9600)
+##
+##ser.write(b'Change')

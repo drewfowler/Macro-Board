@@ -1,0 +1,97 @@
+#include "Arduino.h"
+#include "Buttons.h"
+#include <Keyboard.h>
+
+String password = "Tim4796!";
+
+Buttons::Buttons()
+{
+  
+  Serial.println("Begin Macro Board");
+}
+
+void Buttons::ServiceButton1()
+{
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_F1);
+  delay(10);
+  Keyboard.releaseAll();
+  //Serial.println("Button 1 Pressed");
+}
+
+void Buttons::ServiceButton2()
+{
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_F2);
+  delay(10);
+  Keyboard.releaseAll();
+  Serial.println("Button 2 Pressed");
+}
+
+void Buttons::ServiceButton3()
+{
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_F3);
+  delay(10);
+  Keyboard.releaseAll();
+  //Serial.println("Button 3 Pressed");
+}
+
+void Buttons::ServiceButton4()
+{
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_F4);
+  delay(10);
+  Keyboard.releaseAll();
+  //Serial.println("Button 4 Pressed");
+}
+
+void Buttons::ServiceButton5()
+{
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_F5);
+  delay(10);
+  Keyboard.releaseAll();
+  //Serial.println("Button 5 Pressed");
+}
+
+void Buttons::ServiceButton6()
+{
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_F6);
+  delay(10);
+  Keyboard.releaseAll();
+  //Serial.println("Button 6 Pressed");
+}
+
+void Buttons::ServiceButton7()
+{
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_F7);
+  delay(10);
+  Keyboard.releaseAll();
+  //Serial.println("Button 7 Pressed");
+}
+
+void Buttons::ServiceButton8()
+{
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_F8);
+  delay(10);
+  Keyboard.releaseAll();
+  //Serial.println("Button 8 Pressed");
+}
+
+void Buttons::ServiceButton9()
+{
+ Keyboard.press(KEY_LEFT_CTRL);
+ Keyboard.press(KEY_LEFT_ALT);
+ Keyboard.press(KEY_DELETE);
+ delay(10);
+ Keyboard.releaseAll();
+ delay(2200);
+ Keyboard.print(password);
+ Keyboard.press(KEY_RETURN);
+ delay(10);
+ Keyboard.releaseAll();
+}
