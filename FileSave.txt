@@ -114,8 +114,11 @@ return
 		Send {ENTER}
 	return 
 	
-	+F3::					;Up layer
-		Send {NumpadAdd}
+	+F3::					;Run diagnostics
+		Send {t}
+		Send {d}
+		Send {r}
+		Send {ENTER}
 	return 
 	
 	+F4::					;Switch Signal Layers
@@ -129,8 +132,8 @@ return
 		Send {SHIFT up}
 	return 
 	
-	+F6::					;down layer
-		Send {NumpadSub}
+	+F6::					;up layer
+		Send {+}
 	return 
 	
 
@@ -143,26 +146,29 @@ return
 		Send {p}
 		Send {w}
 	return 
-
+	
+	+F9::					;down layer
+		Send {-}
+	return 
 }
 
 #IfWinActive ahk_exe Chrome.exe
 {
 
 	
-	+F1::					;next tab			
+	+F1::					;New Tab
 		Send {CTRL down}
-		Send {tab}
+		Send {t}
 		Send {CTRL up}
 	return
 	
 	
-	+F2::					;previous tab
+	+F2::					;Digikey
 		Send {CTRL down}
-		Send {SHIFT down}
-		Send {tab}
+		Send {t}
 		Send {CTRL up}
-		Send {SHIFT up}
+		SendRaw d
+		Send {ENTER}
 	return
 	
 	+F3::					;Close tab
@@ -171,10 +177,12 @@ return
 		Send {CTRL up}
 	return	
 	
-	+F4::					;New Tab
+	+F4::					;Craigslist
 		Send {CTRL down}
 		Send {t}
 		Send {CTRL up}
+		SendRaw b
+		Send {ENTER}
 	return
 	
 	+F6::					;Open previous tab	
@@ -186,22 +194,20 @@ return
 	return 
 		
 	
-	+F7::					;Desktop right
+	+F7::					;Tab Forward
 		Send {CTRL down}
-		Send {LWIN down}
-		Send {Right}
+		Send {TAB}
 		Send {CTRL up}
-		Send {LWIN up}
 		
 	return
 	
 	
-	+F8::					;Desktop Left
+	+F8::					;Tab Backward
 		Send {CTRL down}
-		Send {LWIN down}
-		Send {Left}
+		Send {SHIFT down}
+		Send {TAB}
 		Send {CTRL up}
-		Send {LWIN up}
+		Send {SHIFT up}
 	return
 	
 }

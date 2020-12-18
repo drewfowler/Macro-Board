@@ -1,8 +1,10 @@
+//#include <Keyboard.h>
+
 #include "Arduino.h"
 #include "Buttons.h"
 #include <Keyboard.h>
 
-String password = "Tim4796!";
+String password = "Sports17!Kid";
 
 Buttons::Buttons()
 {

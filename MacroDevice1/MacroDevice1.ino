@@ -97,8 +97,8 @@ void setup() {
   printSquare("N App",7,ST77XX_WHITE);
   setTitle("Chrome",ST77XX_WHITE); 
 
-  tft.fillScreen(ST77XX_RED);
-  drawSquares(ST77XX_WHITE);
+//  tft.fillScreen(ST77XX_RED);
+//  drawSquares(ST77XX_WHITE);
 
   Keyboard.begin();
 }
@@ -107,7 +107,7 @@ void loop()
 {
   
    CheckButtons();
-   CheckActiveWindow();
+   //CheckActiveWindow();
 
 }
 
@@ -151,14 +151,14 @@ void changeApp(APP newAPP)
       tft.fillScreen(ST77XX_RED);
       //draw each button space
       drawSquares(ST77XX_WHITE);
-      printSquare("New Tab",3,ST77XX_WHITE);
-      printSquare("Digikey",2,ST77XX_WHITE);
+      printSquare("FOR Tab",3,ST77XX_WHITE);
+      printSquare("PREV Tab",2,ST77XX_WHITE);
       printSquare("Close",1,ST77XX_WHITE);
-      printSquare("BC",6,ST77XX_WHITE);
+      printSquare("New Tab",6,ST77XX_WHITE);
       printSquare("Refresh",5,ST77XX_WHITE);
       printSquare("Last",4,ST77XX_WHITE);
-      printSquare("For",9,ST77XX_WHITE);
-      printSquare("Prev",8,ST77XX_WHITE);
+      printSquare("For D",9,ST77XX_WHITE);
+      printSquare("Prev D",8,ST77XX_WHITE);
       printSquare("N App",7,ST77XX_WHITE);
       setTitle("Chrome",ST77XX_WHITE); 
       setTitle("Chrome",ST77XX_WHITE); 
@@ -173,7 +173,8 @@ void changeApp(APP newAPP)
       printSquare("R Error",2,ST77XX_BLACK);
       printSquare("+S",5,ST77XX_BLACK);
       printSquare("Sw Lay",6,ST77XX_BLACK);
-      printSquare("DesignR",1,ST77XX_BLACK);
+      printSquare("DesignR",1,ST77XX_BLACK); 
+      printSquare("Wire",8,ST77XX_BLACK);
       break;
     case mcuxpressoide:
       tft.fillScreen(ST77XX_YELLOW);
@@ -195,10 +196,10 @@ void changeApp(APP newAPP)
       //draw each button space
       drawSquares(ST77XX_BLUE);
       setTitle("IAR",ST77XX_WHITE);
-      printSquare("Clean",1,ST77XX_WHITE);
+      printSquare("Back",1,ST77XX_WHITE);
       printSquare("Make",2,ST77XX_WHITE);
       printSquare("Debug",3,ST77XX_WHITE);
-      printSquare("Compile",4,ST77XX_WHITE);
+      printSquare("Go to D",4,ST77XX_WHITE);
       printSquare("S Debug",5,ST77XX_WHITE);
       printSquare("Run",6,ST77XX_WHITE);
       printSquare("N App",7,ST77XX_WHITE);
@@ -339,21 +340,19 @@ void CheckButtons()
   bool value9 = debounce9.fell();
   if(value9 ==1)
     {    
-      tft.fillScreen(ST77XX_RED);
-      drawSquares(ST77XX_WHITE);
-//      value9=0;
-//      currentAPP = currentAPP +1;
-//      changeApp(currentAPP);
-//      delay(200);
-//      int val = digitalRead(10); 
-//      Serial.print("value = ");
-//      Serial.println(val);
-//      if(val==0)
-//      {
-//        button.ServiceButton9();
-//      }
+//      tft.fillScreen(ST77XX_RED);
+//      drawSquares(ST77XX_WHITE);
+      value9=0;
+      currentAPP = currentAPP +1;
+      changeApp(currentAPP);
+      delay(200);
+      int val = digitalRead(10); 
+      Serial.print("value = ");
+      Serial.println(val);
+      if(val==0)
+      {
+        button.ServiceButton9();
+      }
     }
     
 }
-
-
